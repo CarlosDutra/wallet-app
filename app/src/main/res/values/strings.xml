@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Boa compra</string>
+    <string name="title_activity_wallet">Wallet</string>
+    <string name="title_activity_comprar_servicos">Selecione um produto</string>
+    <string name="title_activity_pagar_boleto">Pagar boleto</string>
+    <string name="title_activity_enviar_dinheiro">Enviar dinheiro</string>
+    <string name="title_activity_encomendar">Encomendar produto</string>
+    <string name="aguarde_um_momento">Aguarde um momento...</string>
+    <string name="enviando_dados">Enviando dados</string>
+</resources>
