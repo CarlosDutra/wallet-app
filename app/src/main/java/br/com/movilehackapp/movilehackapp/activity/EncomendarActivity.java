@@ -61,6 +61,11 @@ public class EncomendarActivity extends AppCompatActivity {
         imagemProdutoEscolhido = findViewById(R.id.imagemProdutoEscolhido);
         editDataLimite = findViewById(R.id.editDataLimite);
 
+        //Valores default de preenchimento para fins de prototipagem
+        editValorDispostoAPagar.setText("10");
+        editDataLimite.setText("17/03/2019");
+        textValorResultado.setText("Preço total: R$15.00");
+
         //Formatação do editDataLimite
         editDataLimite.addTextChangedListener(MaskEditUtil.mask(editDataLimite, MaskEditUtil.FORMAT_DATE));
 
