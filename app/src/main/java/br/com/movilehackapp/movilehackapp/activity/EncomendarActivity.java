@@ -1,17 +1,9 @@
 package br.com.movilehackapp.movilehackapp.activity;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,11 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.util.List;
 
 import br.com.movilehackapp.movilehackapp.R;
 import br.com.movilehackapp.movilehackapp.helper.GetNoticeDataService;
@@ -91,7 +79,7 @@ public class EncomendarActivity extends AppCompatActivity {
                             .into(imagemProdutoEscolhido);
                 }
                 else{
-                    imagemProdutoEscolhido.setImageResource(R.drawable.ic_android_preto_40dp);
+                    imagemProdutoEscolhido.setImageResource(R.drawable.ic_android_branco_40dp);
                 }
 
                 textTituloProdutoEscolhido.setText(produtoEscolhido.getName());
@@ -118,13 +106,13 @@ public class EncomendarActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence == null || charSequence.toString().equals("")){
-                    textValorResultado.setText("= R$0.00");
+                    textValorResultado.setText("Preço total: R$0.00");
                     textRendimentoPrevisto.setText("R$0.00");
                 }
                 else{
                     double value = Double.parseDouble(charSequence.toString());
 
-                    String valorResultado = "= R$" + decimalFormat.format(value + 5);
+                    String valorResultado = "Preço total: R$" + decimalFormat.format(value + 5);
                     String rendimentoPrevisto = "R$" + decimalFormat.format(value*0.0005);
 
                     textValorResultado.setText(valorResultado);
@@ -180,9 +168,6 @@ public class EncomendarActivity extends AppCompatActivity {
             //Configura o cancelamento (determina se o usuário
             //pode fugir ou não do AlertDialog)
             dialog.setCancelable(false);
-
-            //configura ícone
-            //dialog.setIcon(android.R.drawable.ic_dialog_info);
 
             //Configura ações para botão sim ou não
             dialog.setPositiveButton("Estou ciente", new DialogInterface.OnClickListener() {

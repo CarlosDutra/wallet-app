@@ -13,7 +13,7 @@ public class Servico {
 
     public Servico(String nome){
         this.nome = nome;
-        this.imagem = R.drawable.ic_android_preto_40dp;
+        this.imagem = R.drawable.ic_android_branco_40dp;
     }
 
     public String getNome() {

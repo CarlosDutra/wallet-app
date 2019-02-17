@@ -111,13 +111,13 @@ public class WalletActivity extends AppCompatActivity {
     private void adicionarItensRecyclerViewServicos(){
         //Isso será fixo, mas também pode ser dinâmico
         Servico s;
-        s = new Servico("Comprar produtos", R.drawable.ic_list_servicos_preto_40dp);
+        s = new Servico("Comprar produtos", R.drawable.ic_list_servicos_branco_40dp);
         servicos.add(s);
 
-        s = new Servico("Pagar boleto", R.drawable.ic_boleto_preto_40dp);
+        s = new Servico("Pagar boleto", R.drawable.ic_boleto_branco_40dp);
         servicos.add(s);
 
-        s = new Servico("Enviar dinheiro", R.drawable.ic_enviar_dinheiro_black_40dp);
+        s = new Servico("Enviar dinheiro", R.drawable.ic_enviar_dinheiro_branco_40dp);
         servicos.add(s);
 
         s = new Servico("Exemplo");

@@ -45,7 +45,7 @@ public class ProdutosAdapter extends RecyclerView.Adapter<ProdutosAdapter.MyView
         if(produto.getImage() != null){
             RequestOptions options = new RequestOptions()
                     .centerCrop()
-                    .error(R.drawable.ic_android_preto_40dp)
+                    .error(R.drawable.ic_android_branco_40dp)
                     .fitCenter();
 
             Uri uri = Uri.parse(produto.getImage());

@@ -1,13 +1,11 @@
 package br.com.movilehackapp.movilehackapp.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
@@ -24,8 +22,6 @@ import br.com.movilehackapp.movilehackapp.helper.RecyclerItemClickListener;
 import br.com.movilehackapp.movilehackapp.helper.RetrofitInstance;
 import br.com.movilehackapp.movilehackapp.model.Produto;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ComprarServicosActivity extends AppCompatActivity {
 
@@ -100,47 +96,6 @@ public class ComprarServicosActivity extends AppCompatActivity {
 
         MyAsyncTask task = new MyAsyncTask();
         task.execute();
-
-        //Limpar produtos antigos para não repetir
-        /*listaProdutos.clear();
-
-        //Requisição HTTP da base de dados
-        GetNoticeDataService service = RetrofitInstance.getRetrofitInstance().create(GetNoticeDataService.class);
-
-        Call<List<Produto>> call = service.listaProdutos();
-
-        call.enqueue(new Callback<List<Produto>>() {
-            @Override
-            public void onResponse(Call<List<Produto>> call, Response<List<Produto>> response) {
-                List<Produto> listaProdutosRecuperados = response.body();
-
-                if(listaProdutosRecuperados != null && !listaProdutosRecuperados.isEmpty()){
-                    for(Produto produto: listaProdutosRecuperados){
-                        listaProdutos.add(produto);
-                    }
-
-                    adapter.notifyDataSetChanged();
-                }
-                else{
-                    Toast.makeText(ComprarServicosActivity.this,
-                            "Não foram encontrados produtos.",
-                            Toast.LENGTH_SHORT)
-                            .show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Produto>> call, Throwable t) {
-
-                Toast.makeText(ComprarServicosActivity.this,
-                        "Não foi possível obter os produtos. Erro HTTP GET.",
-                        Toast.LENGTH_SHORT)
-                        .show();
-            }
-        });
-
-        progressBar.setVisibility(View.GONE);
-        recyclerProdutos.setVisibility(View.VISIBLE);*/
     }
 
     class MyAsyncTask extends AsyncTask<Void, Void, Void>{
@@ -196,7 +151,5 @@ public class ComprarServicosActivity extends AppCompatActivity {
             progressBar.setVisibility(exibirProgress ? View.VISIBLE : View.GONE);
             recyclerProdutos.setVisibility(!exibirProgress ? View.VISIBLE : View.GONE);
         }
-
     }
-
 }
