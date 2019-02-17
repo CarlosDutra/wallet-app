@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Últimas transações"
+        android:text="Últimas encomendas"
         android:textSize="18sp"
         android:textStyle="bold" />
 

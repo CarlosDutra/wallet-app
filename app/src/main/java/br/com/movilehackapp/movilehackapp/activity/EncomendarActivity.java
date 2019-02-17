@@ -2,6 +2,7 @@ package br.com.movilehackapp.movilehackapp.activity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -140,11 +142,19 @@ public class EncomendarActivity extends AppCompatActivity {
 
     public void encomendar(View view){
 
+        //Recuperar valores e enviar o request HTTP
         String valorDispostoAPagar = editValorDispostoAPagar.getText().toString();
         String dataLimite = editDataLimite.getText().toString();
         String[] diaMesAno = dataLimite.split("/");
         dataLimite = diaMesAno[2] + "-" + diaMesAno[1] + "-" + diaMesAno[0];
 
+        final Compra compra = new Compra(
+                Usuario.getBuyerId(),
+                Double.parseDouble(valorDispostoAPagar),
+                dataLimite
+        );
+
+        //Verificação de campos inválidos
         if(valorDispostoAPagar.equals("")){
             Toast.makeText(this,
                     "Insira um valor máximo que você esteja disposto a pagar.",
@@ -158,14 +168,33 @@ public class EncomendarActivity extends AppCompatActivity {
                     .show();
         }
         else{
-            Compra compra = new Compra(
-                    Usuario.getBuyerId(),
-                    Double.parseDouble(valorDispostoAPagar),
-                    dataLimite
-            );
+            //AlertDialog
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 
-            MyAsyncTask task = new MyAsyncTask();
-            task.execute(compra);
+            //Configura título e mensagem
+            dialog.setTitle("Atenção");
+            dialog.setMessage("Recebemos sua encomenda." +
+                    "\nO dinheiro referente ao valor que você pode pagar será debitado de seu cartão." +
+                    "\nAssim que encontrarmos um vendedor para sua compra, seu produto será enviado diretamente para sua casa, e estornaremos o valor da diferença se houver, junto de um rendimento.");
+
+            //Configura o cancelamento (determina se o usuário
+            //pode fugir ou não do AlertDialog)
+            dialog.setCancelable(false);
+
+            //configura ícone
+            //dialog.setIcon(android.R.drawable.ic_dialog_info);
+
+            //Configura ações para botão sim ou não
+            dialog.setPositiveButton("Estou ciente", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    MyAsyncTask task = new MyAsyncTask();
+                    task.execute(compra);
+                }
+            });
+
+            dialog.create();
+            dialog.show();
         }
     }
 
